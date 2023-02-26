@@ -9,15 +9,13 @@ export class Searchbar extends Component {
   };
 
   handleChange = e => {
-    // const { name, value } = e.currentTarget;
-    // this.setState({ [name]: value });
     this.setState({ searchQuery: e.currentTarget.value.toLowerCase() });
   };
 
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.searchQuery.trim() === '') {
-      return alert('Please enter something :)');
+      return alert('Enter something!');
     }
     this.props.onSubmit(this.state.searchQuery);
     this.setState({ searchQuery: '' });
