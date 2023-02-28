@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchImages } from './services/api';
+import { fetchImages } from '../services/api';
 import { Searchbar } from './Searchbar/Searchbar';
 import { Loader } from './Loader/Loader';
 import { ImageGallery } from './ImageGallery/ImageGallery';
@@ -62,15 +62,6 @@ export class App extends Component {
     this.setState(prevState => ({ page: prevState.page + 1 }));
     this.scrollOnMoreButton();
   };
-
-  scrollOnMoreButton = () => {
-    animateScroll.scrollToBottom({
-      duration: 1000,
-      delay: 10,
-      smooth: 'linear',
-    });
-  };
-
   openModal = largeImageURL => {
     console.log(largeImageURL);
     this.setState({
@@ -84,7 +75,13 @@ export class App extends Component {
       showModal: false,
     });
   };
-
+  scrollOnMoreButton = () => {
+    animateScroll.scrollToBottom({
+      duration: 1000,
+      delay: 10,
+      smooth: 'linear',
+    });
+  };
   render() {
     const { images, isLoading, loadMore, page, showModal, largeImageURL } =
       this.state;
